@@ -16,3 +16,5 @@ opt.confirm = true
 opt.cmdheight = 1
 
 opt.fillchars:append({ eob = " " })
+
+opt.clipboard = "unnamed"

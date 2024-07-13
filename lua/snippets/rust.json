@@ -179,13 +179,26 @@
         "prefix": "skip",
         "body": "#[rustfmt::skip]"
     },
-    "AoC input": {
-        "prefix": "aoc_input",
+    "AoC Template": {
+        "prefix": "aoc",
         "body": [
-            "#[cfg(debug_assertions)]",
+            "fn part1(input: &str) -> usize {",
+            "0",
+            "}\n",
+            "fn part2(input: &str) -> usize {",
+            "0",
+            "}\n",
+            "fn main() {",
+            "let input = include_str!(\"../in.txt\");",
+            "println!(\"Part 1: {}\", part1(input));",
+            "println!(\"Part 2: {}\", part2(input));",
+            "}\n",
+            "#[test]",
+            "fn example1() {",
             "let input = include_str!(\"../ex1.txt\");",
-            "#[cfg(not(debug_assertions))]",
-            "let input = include_str!(\"../in.txt\");"
+            "assert_eq!(part1(input), 0);",
+            "assert_eq!(part2(input), 0);",
+            "}"
         ]
     }
 }
