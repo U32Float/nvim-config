@@ -3,8 +3,8 @@ return {
 	{ "hrsh7th/cmp-path" }, -- source for file system paths
 
 	-- snippets
-	{ "L3MON4D3/LuaSnip" },          -- snippet engine
-	{ "saadparwaiz1/cmp_luasnip" },  -- for autocompletion
+	{ "L3MON4D3/LuaSnip" }, -- snippet engine
+	{ "saadparwaiz1/cmp_luasnip" }, -- for autocompletion
 	{ "rafamadriz/friendly-snippets" }, -- useful snippets
 	{
 		"hrsh7th/nvim-cmp",
@@ -93,10 +93,19 @@ return {
 				},
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp", priority = 1000 },
-					{ name = "luasnip",  priority = 750 },
-					{ name = "buffer",   priority = 500 },
-					{ name = "path",     priority = 250 },
+					{ name = "luasnip", priority = 750 },
+					{ name = "buffer", priority = 500 },
+					{ name = "path", priority = 250 },
 				}),
+				formatting = {
+					format = function(entry, vim_item)
+						vim_item.abbr = string.sub(vim_item.abbr, 1, 20)
+						return vim_item
+					end,
+				},
+				view = {
+					docs = { auto_open = false },
+				},
 			}
 		end,
 	},
