@@ -200,5 +200,11 @@
             "assert_eq!(part2(input), 0);",
             "}"
         ]
+    },
+    "Debug rect": {
+        "prefix": "deb_rect",
+        "body": [
+            "ui.painter().debug_rect(${1:rect}, ${2:Color32::DEBUG_COLOR}, ${3:\"\"});"
+        ]
     }
 }
