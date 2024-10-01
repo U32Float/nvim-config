@@ -204,7 +204,33 @@
     "Debug rect": {
         "prefix": "deb_rect",
         "body": [
-            "ui.painter().debug_rect(${1:rect}, ${2:Color32::DEBUG_COLOR}, ${3:\"\"});"
+            "ui.debug_painter().debug_rect(${1:rect}, ${2:Color32::DEBUG_COLOR}, ${3:\"\"});"
+        ]
+    },
+    "Objc Declare Class": {
+        "prefix": "declare",
+        "body": [
+            "use objc2::declare_class;",
+            "use objc2::mutability::InteriorMutable;",
+            "use objc2::ClassType;",
+            "use objc2::DeclaredClass;",
+            "use objc2_foundation::NSObject;",
+            "",
+            "declare_class!(",
+            "\tpub struct ${1:Name};",
+            "",
+            "\tunsafe impl ClassType for ${1} {",
+            "\t\ttype Super = NSObject;",
+            "\t\ttype Mutability = InteriorMutable;",
+            "\t\tconst NAME: &'static str = \"${1}\";",
+            "\t}",
+            "",
+            "\timpl DeclaredClass for ${1} {",
+            "\t\ttype Ivars = ();",
+            "\t}",
+            "",
+            "\tunsafe impl ${1} { }",
+            ");"
         ]
     }
 }
