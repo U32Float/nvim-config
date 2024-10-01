@@ -215,6 +215,8 @@
             "use objc2::ClassType;",
             "use objc2::DeclaredClass;",
             "use objc2_foundation::NSObject;",
+            "use objc2::rc::Retained;",
+            "use objc2::msg_send_id;",
             "",
             "declare_class!(",
             "\tpub struct ${1:Name};",
@@ -230,7 +232,15 @@
             "\t}",
             "",
             "\tunsafe impl ${1} { }",
-            ");"
+            ");",
+            "",
+            "impl ${1} {",
+            "\tpub fn new() -> Retained<Self> {",
+            "\t\tlet alloc = Self::alloc().set_ivars(());",
+            "",
+            "\t\tunsafe { msg_send_id![super(alloc), init] }",
+            "\t}",
+            "}"
         ]
     }
 }
