@@ -1,0 +1,63 @@
+{
+    "Place a horizontal separator": {
+        "prefix": "sep",
+        "body": [
+            "// -----------------------------------------------------------------------------"
+        ]
+    },
+    "Place a segment line with a name": {
+        "prefix": "segment",
+        "body": [
+            "// -----------------------------------------------------------------------------\n// ${name}:"
+        ]
+    },
+    "Place a big segment line": {
+        "prefix": "bigsegment",
+        "body": [
+            "// =============================================================================\n// ==== # ${name}:"
+        ]
+    },
+    "Place a header": {
+        "prefix": "header",
+        "body": [
+            "/******************************************************************************/",
+            "/*        ${header}                                                           */",
+            "/******************************************************************************/"
+        ]
+    },
+    "Metal shader setup": {
+        "prefix": "metal",
+        "body": [
+            "#include <metal_stdlib>",
+            "using namespace metal;",
+            "",
+            "struct VertexInput {",
+            "\tpacked_float3 position;",
+            "};",
+            "",
+            "struct VertexOutput {",
+            "\tfloat4 position [[position]];",
+            "};",
+            "",
+            "struct Locals {",
+            "};",
+            "",
+            "vertex VertexOutput vertex_main(",
+            "\tdevice const VertexInput* vertices [[buffer(0)]],",
+            "\tdevice const Locals& locals [[buffer(1)]],",
+            "\tuint vertex_idx [[vertex_id]]",
+            ") {",
+            "\tVertexOutput out;",
+            "\tVertexInput in = vertices[vertex_idx];",
+            "",
+            "\tout.position = float4(in.position, 1.0);",
+            "",
+            "\treturn out;",
+            "}",
+            "",
+            "fragment float4 fragment_main(VertexOutput in [[stage_in]]) {",
+            "\treturn float4(1.0);",
+            "}"
+        ]
+    }
+}
