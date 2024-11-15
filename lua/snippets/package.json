@@ -20,6 +20,10 @@
             {
                 "language": "metal",
                 "path": "./metal.json"
+            },
+            {
+                "language": "haskell",
+                "path": "./haskell.json"
             }
         ]
     }
