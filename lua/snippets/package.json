@@ -24,6 +24,10 @@
             {
                 "language": "haskell",
                 "path": "./haskell.json"
+            },
+            {
+                "language": "latex",
+                "path": "./latex.json"
             }
         ]
     }
