@@ -242,5 +242,19 @@
             "\t}",
             "}"
         ]
+    },
+    "Thread local counter": {
+        "prefix": "counter",
+        "body": [
+            "let x = {",
+            "thread_local! {",
+            "static COUNTER: RefCell<usize> = const { RefCell::new(0) };",
+            "}",
+            "COUNTER.with_borrow_mut(|x| {",
+            "*x += 1;",
+            "*x",
+            "})",
+            "};"
+        ]
     }
 }
